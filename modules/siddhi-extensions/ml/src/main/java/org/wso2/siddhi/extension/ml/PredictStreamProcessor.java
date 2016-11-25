@@ -109,7 +109,7 @@ public class PredictStreamProcessor extends StreamProcessor {
 //                        throw new ExecutionPlanRuntimeException(msg);
 //                    }
 
-                    complexEventPopulater.populateComplexEvent(event, new Object[]{prediction});
+                    complexEventPopulater.populateComplexEvent(event, new Object[]{String.valueOf(prediction)});
                 } catch (Exception e) {
                     log.error("Error while predicting", e);
                     throw new ExecutionPlanRuntimeException("Error while predicting", e);
