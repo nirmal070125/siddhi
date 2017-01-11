@@ -109,7 +109,7 @@ public class PredictStreamProcessor extends StreamProcessor {
 //                        throw new ExecutionPlanRuntimeException(msg);
 //                    }
 
-                    complexEventPopulater.populateComplexEvent(event, new Object[]{String.valueOf(prediction)});
+                    complexEventPopulater.populateComplexEvent(event, new Object[]{prediction});
                 } catch (Exception e) {
                     log.error("Error while predicting", e);
                     throw new ExecutionPlanRuntimeException("Error while predicting", e);
@@ -143,7 +143,7 @@ public class PredictStreamProcessor extends StreamProcessor {
         }
 
         // data-type
-        Encoder outputDatatypeEncoder = Encoders.STRING();
+        Encoder<?> outputDatatypeEncoder = Encoders.STRING();
         if (attributeExpressionExecutors.length > 1) {
             if (attributeExpressionExecutors[1] instanceof ConstantExpressionExecutor) {
                 Object constantObj = ((ConstantExpressionExecutor) attributeExpressionExecutors[1]).getValue();

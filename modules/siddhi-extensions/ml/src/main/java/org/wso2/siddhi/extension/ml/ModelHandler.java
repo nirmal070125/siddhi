@@ -43,7 +43,7 @@ public class ModelHandler {
     private PipelineModel mlModel;
     private final SparkSession spark;
     private StructType schema;
-    private Encoder outputDataTypeEncoder;
+    private Encoder<?> outputDataTypeEncoder;
 
     /**
      *
@@ -51,7 +51,7 @@ public class ModelHandler {
      * @param schema schema of the feature set
      * @param outputDataTypeEncoder Encoder for the output data type
      */
-    public ModelHandler(String modelStorageLocation, StructType schema, Encoder outputDataTypeEncoder) {
+    public ModelHandler(String modelStorageLocation, StructType schema, Encoder<?> outputDataTypeEncoder) {
         spark = SparkSession
                 .builder()
                 .appName("Spark Predictor")
